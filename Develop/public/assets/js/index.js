@@ -33,14 +33,23 @@ const getNotes = () =>
     },
   });
 
-const saveNote = (note) =>
-  fetch('/api/notes', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(note),
-  });
+  const saveNote = (note) => {
+    let text = document.getElementById("noteText").value;
+    fetch("/api/notes", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ text }),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      location.reload();
+    })
+    .catch(error => console.error(error));
+  };
+  
 
 const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {
