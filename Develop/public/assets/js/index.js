@@ -39,7 +39,7 @@ const getNotes = () =>
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(note),
+      body: JSON.stringify({ title: note.title, text: note.text }),
     }).then((response) => response.json())
     .then(() => {
       getAndRenderNotes();
@@ -85,6 +85,7 @@ const handleNoteSave = () => {
     renderActiveNote();
   });
 };
+
 
 // Delete the clicked note
 const handleNoteDelete = (e) => {

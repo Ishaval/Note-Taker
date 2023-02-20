@@ -27,20 +27,18 @@ app.get('/api/notes', (req, res) => {
 });
 
 app.post('/api/notes', (req, res) => {
-
-  if (!req.body.title || !req.body.text) {
-    return res.status(400).json({ message: 'Both title and text are required' });
+  const { title, text } = req.body;
+  if (!title || !text) {
+    return res.status(400).send('Title and text are required.');
   }
-  const newNote = {
-    id: notes.length + 1,
-    title: req.body.title,
-    text: req.body.text
+  const note = {
+    title,
+    text,
+    id: uuidv4(),
   };
-  notes.push(newNote);
-  res.json(newNote);
-  console.log(req.body);
+  notes.push(note);
+  res.status(201).json(note);
 });
-
 
 app.get('/api/notes/:id', (req, res) => {
   const id = parseInt(req.params.id);
