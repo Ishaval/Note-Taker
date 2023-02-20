@@ -40,15 +40,12 @@ const getNotes = () =>
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ text }),
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-      location.reload();
-    })
-    .catch(error => console.error(error));
+      body: JSON.stringify(note),
+    }).then(() => {
+      getAndRenderNotes();
+    });
   };
+  
   
 
 const deleteNote = (id) =>
@@ -72,6 +69,8 @@ const renderActiveNote = () => {
     noteText.removeAttribute('readonly');
     noteTitle.value = '';
     noteText.value = '';
+    document.getElementById("saveNote").addEventListener("click", handleNoteSave);
+  
   }
 };
 
