@@ -34,17 +34,18 @@ const getNotes = () =>
   });
 
   const saveNote = (note) => {
-    let text = document.getElementById("noteText").value;
-    fetch("/api/notes", {
-      method: 'POST',
+    return fetch("/api/notes", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(note),
-    }).then(() => {
+    }).then((response) => response.json())
+    .then(() => {
       getAndRenderNotes();
-    });
+    });;
   };
+  
   
   
 
