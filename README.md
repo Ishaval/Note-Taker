@@ -60,7 +60,7 @@ Note Taker includes the following API routes:
 
 Note Taker can be deployed to Heroku by following these steps:
 
-[Deploy in Heroku](https://git.heroku.com/notetakerishaval.git)
+[Deploy in Heroku](https://git.heroku.com/note-taker-ishval.git)
 
 
 
